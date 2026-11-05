@@ -567,3 +567,88 @@ textarea#dialogue-input::placeholder {
   }
 }
 
+/* ==========================================================================
+   404 Not Found Page
+   ========================================================================== */
+.not-found-container {
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 160px);
+  padding: 40px 20px;
+}
+
+.not-found-card {
+  width: 100%;
+  max-width: 520px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  padding: 56px 36px 48px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.not-found-code {
+  font-size: 5.5rem; /* 88px */
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  color: #E2E2DC;
+  user-select: none;
+  font-variant-numeric: tabular-nums;
+}
+
+.not-found-heading {
+  font-size: 1.625rem; /* 26px */
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-top: 4px;
+}
+
+.not-found-description {
+  font-size: 0.9375rem; /* 15px */
+  color: var(--text-secondary);
+  line-height: 1.55;
+  max-width: 380px;
+  margin-bottom: 8px;
+}
+
+.not-found-actions {
+  margin-top: 8px;
+}
+
+.not-found-btn {
+  text-decoration: none;
+  display: inline-flex;
+  padding: 9px 20px;
+  font-size: 0.875rem;
+}
+
+@media (max-width: 480px) {
+  .not-found-card {
+    padding: 40px 20px 36px;
+  }
+
+  .not-found-code {
+    font-size: 4rem;
+  }
+
+  .not-found-heading {
+    font-size: 1.375rem;
+  }
+
+  .not-found-description {
+    font-size: 0.875rem;
+  }
+
+  .not-found-btn {
+    width: 100%;
+  }
+}
+
+

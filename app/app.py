@@ -4,8 +4,9 @@ from transformers import T5ForConditionalGeneration, T5Tokenizer
 import torch
 import re
 from fastapi.templating import Jinja2Templates  # UI
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
+from starlette.exceptions import HTTPException as StarletteHTTPException
 import os
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -81,3 +82,20 @@ async def home(request: Request):
 async def summarize(dialogue_input: DialogueInput):
     summary = summarize_dialogue(dialogue_input.dialogue)
     return {"summary": summary} # return JSON res
+
+# Custom 404 Exception Handler
+@app.exception_handler(StarletteHTTPException)
+async def custom_http_exception_handler(request: Request, exc: StarletteHTTPException):
+    if exc.status_code == 404:
+        accept = request.headers.get("accept", "")
+        # Render custom 404 HTML template for browser requests
+        if "text/html" in accept:
+            return templates.TemplateResponse(
+                request=request,
+                name="404.html",
+                status_code=404
+            )
+        # Return standard JSON response for API requests
+        return JSONResponse(status_code=404, content={"detail": exc.detail or "Not Found"})
+
+    return JSONResponse(status_code=exc.status_code, content={"detail": exc.detail})

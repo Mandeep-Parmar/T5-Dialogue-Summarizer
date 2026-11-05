@@ -1,8 +1,21 @@
+# ==============================================================================
+# T5 Dialogue Summarizer - Python Dependencies
+# ==============================================================================
+
+# --- Core Web Application ---
 fastapi>=0.100.0
-uvicorn>=0.22.0
-jinja2>=3.1.0
+uvicorn[standard]>=0.22.0
 pydantic>=2.0.0
+jinja2>=3.1.0
+python-multipart>=0.0.6
+
+# --- Model & Deep Learning Framework ---
+# Note: For CUDA GPU acceleration, install the appropriate PyTorch build:
+# pip install torch --index-url https://download.pytorch.org/whl/cu121
 torch>=2.0.0
 transformers>=4.30.0
 sentencepiece>=0.1.99
+
+# --- Data Preprocessing & Model Training (Optional for inference) ---
 pandas>=2.0.0
+accelerate>=0.26.0

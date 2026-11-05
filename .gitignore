@@ -1,35 +1,50 @@
-# Byte-compiled / optimized / DLL files
+# Python
 __pycache__/
 *.py[cod]
-*$py.class
+*.pyo
+*.pyd
+.Python
 
-# Virtual Environments
+# Virtual environments
 venv/
 .venv/
 env/
 ENV/
 
-# Environment Variables
+# Environment variables
 .env
 .env.*
 
-# Jupyter Notebook Checkpoints
+# Jupyter
 .ipynb_checkpoints/
 
-# Model Checkpoints & Large Weights (>100MB)
+# Training checkpoints
+training/results/
 results/
 checkpoint-*/
-*.pt
-*.pth
-*.safetensors
-*.bin
+
+# Model directories
+models/saved_summary_model/
 saved_summary_model/
 **/saved_summary_model/
+app/saved_summary_model/
 
-# IDE & Editor files
+# Model weights
+*.safetensors
+*.pt
+*.pth
+*.bin
+*.ckpt
+
+# Logs and experiment outputs
+runs/
+logs/
+wandb/
+
+# IDE
 .vscode/
 .idea/
 
-# OS metadata
+# OS
 .DS_Store
 Thumbs.db
